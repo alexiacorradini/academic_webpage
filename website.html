@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alexia Corradini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Carlito:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: rgba(160, 210, 248, 0.55);      /* attached light blue, reduced opacity */
+    --text: #3b3b40;
+    --accent: #000080;                    /* dark navy blue */
+    --accent-dark: #000080;
+    --link: #000080;
+    --muted: #8a8a92;
+    --rule: rgba(120, 120, 140, 0.25);
+  }
+  * { box-sizing: border-box; }
+  html { background: #ffffff; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    min-height: 100vh;
+    color: var(--text);
+    font-family: "Carlito", Calibri, "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { color: var(--accent-dark); text-decoration: underline; }
+
+  /* ---------- Top navigation ---------- */
+  header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 22px 40px 10px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  nav a {
+    margin-left: 26px;
+    font-size: 15.5px;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    cursor: pointer;
+  }
+  nav a:hover { color: var(--accent-dark); text-decoration: none; }
+  nav a.active {
+    color: var(--accent-dark);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 3px;
+  }
+
+  /* ---------- Layout ---------- */
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 40px 80px;
+  }
+  /* Wider layout when the Talks and events page is shown */
+  main:has(#talks.active) { max-width: 1250px; }
+  .page { display: none; }
+  .page.active { display: block; animation: fade 0.25s ease; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+  h1.name {
+    font-family: "Carlito", Calibri, "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 44px;
+    color: var(--accent);
+    margin: 10px 0 30px;
+    letter-spacing: 0.01em;
+  }
+  h2.page-title {
+    font-family: "Carlito", Calibri, "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    margin: 10px 0 26px;
+    color: var(--text);
+  }
+  h3.section {
+    font-family: "Carlito", Calibri, "Segoe UI", Arial, sans-serif;
+    font-weight: 600;
+    font-size: 21px;
+    color: var(--accent-dark);
+    margin: 36px 0 12px;
+  }
+
+  /* ---------- About page ---------- */
+  .about-row img {
+    float: left;
+    width: 380px;
+    max-width: 100%;
+    margin: 6px 36px 16px 0;
+    border-radius: 6px;
+    box-shadow: 0 4px 18px rgba(80, 80, 120, 0.18);
+  }
+  .about-row p { margin-top: 0; font-size: 18px; }
+  .about-row::after { content: ""; display: block; clear: both; }
+
+  /* ---------- Lists with dates ---------- */
+  ul.datelist { list-style: none; padding: 0; margin: 0; }
+  ul.datelist li {
+    display: flex;
+    gap: 18px;
+    padding: 9px 0;
+  }
+  .date {
+    flex: 0 0 105px;
+    color: var(--muted);
+    font-size: 14.5px;
+    padding-top: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+  .entry em { font-style: italic; }
+  .entry .title { font-weight: 400; }
+
+  @media (max-width: 700px) {
+    header { flex-wrap: wrap; padding: 16px 20px 8px; }
+    nav a { margin: 0 14px 8px 0; }
+    main { padding: 20px 20px 60px; }
+    .about-row { flex-direction: column; }
+    .about-row img { width: 100%; }
+    ul.datelist li { flex-direction: column; gap: 2px; }
+    .date { flex: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a data-page="about" class="active">About me</a>
+    <a data-page="research">Research</a>
+    <a data-page="talks">Talks and events</a>
+    <a data-page="misc">Miscellaneous</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ================= About me ================= -->
+  <section id="about" class="page active">
+    <h1 class="name">Alexia Corradini <span style="font-size: 14px; font-weight: 400; color: #000;">(email: ac2478@cam.ac.uk)</span></h1>
+    <div class="about-row">
+      <img src="cover_photo.jpeg" alt="Alexia Corradini">
+      <p>I am a third year PhD student in symplectic topology, supervised by
+      Ivan Smith at the University of Cambridge. You can find my resume <a href="resume.pdf" target="_blank">here</a>.</p>
+      <p>In my research, I use tools from algebraic geometry and mirror symmetry to understand Lagrangians in symplectic manifolds. For instance, I am interested in how the theory of algebraic cycles can inform the way we classify Lagrangians, and what Hodge theory tells us about the structure of their open Gromov-Witten invariants.</p>
+      <p>Previously, I have spent time at the Université Libre de Bruxelles, Ecole Polytechnique, and Université Paris-Saclay.</p>
+    </div>
+    <p style="font-size: 13px; color: var(--muted); margin-top: 48px;">The creation of this webpage was generously sponsored by Dhruv Ranganathan.</p>
+  </section>
+
+  <!-- ================= Research ================= -->
+  <section id="research" class="page">
+    <h2 class="page-title">Research</h2>
+    <h3 class="section">Publications and preprints</h3>
+    <ul class="datelist">
+      <li>
+        <span class="date">2025</span>
+        <span class="entry"><a href="https://www.degruyterbrill.com/document/doi/10.1515/crelle-2025-0059/html" target="_blank">Algebraic Lagrangian cobordisms, flux and the Lagrangian Ceresa cycle.</a>
+        Published in <em>Journal f&uuml;r die reine und angewandte Mathematik (Crelle&rsquo;s Journal)</em>.</span>
+      </li>
+      <li>
+        <span class="date">2022</span>
+        <span class="entry"><a href="https://www.worldscientific.com/doi/10.1142/S0129167X24500265" target="_blank">Equivariant localisation in the theory of Z-stability for K&auml;hler manifolds.</a>
+        Published in <em>International Journal of Mathematics</em>.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ================= Talks and events ================= -->
+  <section id="talks" class="page">
+    <h2 class="page-title">Talks and events</h2>
+
+    <h3 class="section">Talks</h3>
+    <ul class="datelist">
+      <li><span class="date">18/06/2026</span><span class="entry"><a href="https://www.imj-prg.fr/tga/sem-ga/" target="_blank">&ldquo;A Lagrangian cycle theory&rdquo;</a> &mdash; A Lagrangian cycle theory, Institut de Mathématiques de Jussieu </span></li>
+      <li><span class="date">25/03/2026</span><span class="entry"><a href="https://www.dpmms.cam.ac.uk/ftbf26/titles-and-abstracts" target="_blank">&ldquo;A Lagrangian cycle theory&rdquo;</a> &mdash; Conference: Floer theory beyond Floer, University of Cambridge</span></li>
+      <li><span class="date">13/05/2025</span><span class="entry"><a href="https://talks.cam.ac.uk/talk/index/243649" target="_blank">&ldquo;Towards a Lagrangian cycle theory: the Lagrangian Ceresa cycle&rdquo;</a> &mdash; Algebraic geometry seminar, University of Cambridge</span></li>
+      <li><span class="date">15/10/2025</span><span class="entry">&ldquo;The Lagrangian Ceresa cycle&rdquo; &mdash; EDGE seminar, University of Edinburgh</span></li>
+      <li><span class="date">13/05/2025</span><span class="entry"><a href="http://talks.cam.ac.uk/talk/index/175472" target="_blank">&ldquo;The Lagrangian Ceresa cycle&rdquo;</a> &mdash; Algebraic geometry seminar, University of Glasgow</span></li>
+      <li><span class="date">28/04/2025</span><span class="entry"><a href="http://talks.cam.ac.uk/talk/index/175472" target="_blank">&ldquo;The Lagrangian Ceresa cycle&rdquo;</a> &mdash; MAGIC seminar, Imperial College London</span></li>
+      <li><span class="date">24/04/2025</span><span class="entry"><a href="http://talks.cam.ac.uk/talk/index/175472" target="_blank">&ldquo;Algebraic Lagrangian cobordisms&rdquo;</a> &mdash; Syzygies and mirror symmetry virtual seminar</span></li>
+      <li><span class="date">11/04/2025</span><span class="entry"><a href="http://talks.cam.ac.uk/talk/index/175472" target="_blank">&ldquo;The Lagrangian Ceresa cycle&rdquo;</a> &mdash; Symplectic Zoominar</span></li>
+      <li><span class="date">21/03/2025</span><span class="entry">Expository talk on the paper <a href="https://www.ams.org/journals/jams/2019-32-01/S0894-0347-2018-00909-9/S0894-0347-2018-00909-9.pdf" target="_blank"><em>Generating the Fukaya category for Hamiltonian G-manifolds</em></a> by Evans&ndash;Lekili at the European Kylerec workshop in Uppdal, Norway</span></li>
+      <li><span class="date">07/03/2025</span><span class="entry"><a href="http://talks.cam.ac.uk/talk/index/175472" target="_blank">&ldquo;Holomorphic curve theory and the topology of Lagrangians&rdquo;</a> &mdash; Junior geometry seminar, Imperial College London</span></li>
+      <li><span class="date">29/04/2024</span><span class="entry">Expository talk on <em>Flow categories</em> at the <a href="https://amandahirschi.com/?page_id=262" target="_blank">Spring School on Floer homotopy theory</a> in Pont-sur-Yonne, France</span></li>
+      <li><span class="date">11/08/2022</span><span class="entry"><a href="https://www.dpmms.cam.ac.uk/~rd430/cambridge-august-complex-geometry.html" target="_blank">&ldquo;Equivariant localization in the theory of Z-stability and Z-critical metrics&rdquo;</a> &mdash; Cambridge complex geometry afternoon, University of Cambridge</span></li>
+      <li><span class="date">17/06/2022</span><span class="entry"><a href="http://talks.cam.ac.uk/talk/index/175472" target="_blank">&ldquo;Localization theorems in K&auml;hler geometry&rdquo;</a> &mdash; Junior Geometry Seminar, University of Cambridge</span></li>
+    </ul>
+
+    <h3 class="section">Events organised</h3>
+    <ul class="datelist">
+      <li><span class="date">July 2025</span><span class="entry">Together with Danil Ko&#382;evnikov, I organised a <a href="http://talks.cam.ac.uk/talk/index/175472" target="_blank">summer school on partially wrapped Fukaya categories</a> which took place in Helmsley, UK and was mentored by Sheel Ganatra and Jeff Hicks. We hosted 29 participants &mdash; mainly PhD students or early career postdocs.</span></li>
+      <li><span class="date">2024&ndash;2025</span><span class="entry">Together with Adrian Dawid, we organised an internal &ldquo;A-side seminar&rdquo; over three terms, bringing together the symplectic group at the University of Cambridge, offering opportunities for members to present original research, or discuss an interesting paper.</span></li>
+    </ul>
+  </section>
+
+  <!-- ================= Miscellaneous ================= -->
+  <section id="misc" class="page">
+    <h2 class="page-title">Miscellaneous</h2>
+    <p><a href="calvin_hobbes.png" target="_blank">Sisyphus is happy.</a></p>
+  </section>
+
+</main>
+
+<script>
+  const links = document.querySelectorAll("nav a[data-page]");
+  const pages = document.querySelectorAll(".page");
+  links.forEach(link => {
+    link.addEventListener("click", () => {
+      links.forEach(l => l.classList.remove("active"));
+      pages.forEach(p => p.classList.remove("active"));
+      link.classList.add("active");
+      document.getElementById(link.dataset.page).classList.add("active");
+      window.scrollTo(0, 0);
+    });
+  });
+</script>
+
+</body>
+</html>
